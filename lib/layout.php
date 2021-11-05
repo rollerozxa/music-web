@@ -7,7 +7,7 @@
  * @return \Twig\Environment Twig object.
  */
 function twigloader($subfolder = '') {
-	global $tplCache, $tplNoCache;
+	global $tplCache, $tplNoCache, $log, $userdata;
 
 	$doCache = ($tplNoCache ? false : $tplCache);
 
@@ -19,5 +19,13 @@ function twigloader($subfolder = '') {
 
 	$twig->addExtension(new MusicWebExtension());
 
+	$twig->addGlobal('log', $log);
+	$twig->addGlobal('userdata', $userdata);
+
 	return $twig;
+}
+
+function redirect($url) {
+	header(sprintf('Location: %s', $url));
+	die();
 }
