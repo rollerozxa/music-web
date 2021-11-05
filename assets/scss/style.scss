@@ -1,0 +1,82 @@
+/// General Styling \\\
+body {
+	background-color: #0c0c0c;
+	color: #eee;
+	font-family: "Fira Code", monospace;
+	margin: 0;
+}
+
+a {
+	color: #55cf55;
+	text-decoration: none;
+}
+
+/// Form elements \\\
+input[type=text], input[type=password], input[type=submit] {
+	background-color: black;
+	color: #eee;
+	border: 1px solid #eee;
+	padding: 5px;
+
+	&:hover {
+		background-color: #0c0c0c;
+	}
+
+	&:focus {
+		background-color: #1d1d1d;
+	}
+}
+
+/// Header & Footer \\\
+
+header, footer {
+	background-color: #080808;
+	padding: 15px 0;
+}
+
+header {
+	.navbar {
+		max-width: 1000px;
+		margin: auto;
+		padding: 0 50px;
+
+		.title {
+			font-size: 24pt;
+			font-weight: bold;
+
+		}
+
+		.links {
+			font-size: 20pt;
+			float: right;
+		}
+	}
+
+}
+
+.container {
+	max-width: 1000px;
+	margin: 20px auto;
+	padding: 0 20px;
+	min-height: calc(100vh - 190px);
+}
+
+footer {
+	max-height: 50px;
+	min-height: 50px;
+	line-height: 1.4;
+	text-align: center;
+}
+
+/// Login/Register box \\\
+
+.loginbox {
+	background-color: #080808;
+	padding: 20px;
+	margin: 20px auto;
+	width: 350px;
+}
+
+.error {
+	color: #ff0000;
+}

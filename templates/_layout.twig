@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+	<title>music-web</title>
+
+	<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+	<header>
+		<div class="navbar">
+			<a href="/"><span class="title">music-web</span></a>
+			<!--<div class="links">
+				<a href="#">Some link</a>
+			</div>-->
+		</div>
+	</header>
+
+	<div class="container">
+		{% block content %}{% endblock %}
+	</div>
+
+	<footer>
+		Powered by music-web<br>
+		{{ profiler_stats() }}
+	</footer>
+</body>
+</html>
