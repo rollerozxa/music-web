@@ -3,6 +3,8 @@ require('lib/common.php');
 
 $twig = twigloader();
 
-echo $twig->render('index.twig', [
+$allSongs = query("SELECT * FROM music");
 
+echo $twig->render('index.twig', [
+	'all_songs' => $allSongs
 ]);

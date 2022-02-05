@@ -80,3 +80,37 @@ footer {
 .error {
 	color: #ff0000;
 }
+
+/// Music list \\\
+
+ul.music-list {
+	margin: 0;
+	padding: 0;
+	display: block;
+
+	a {
+		color: #eee;
+	}
+
+	li {
+		height: 160px;
+		width: 160px;
+		list-style-type: none;
+		display: inline-block;
+
+		border: 1px solid white;
+
+		h2 {
+			text-align: center;
+			font-size: 18pt;
+		}
+
+		p {
+			margin: 0 10px;
+		}
+
+		&:hover {
+			background-color: rgba($color: #fff, $alpha: 0.1);
+		}
+	}
+}

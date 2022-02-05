@@ -25,6 +25,11 @@ function twigloader($subfolder = '') {
 	return $twig;
 }
 
+function track($track) {
+	$twig = twigloader('components');
+	return $twig->render('track.twig', ['track' => $track]);
+}
+
 function redirect($url) {
 	header(sprintf('Location: %s', $url));
 	die();
