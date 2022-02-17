@@ -30,6 +30,12 @@ function track($track) {
 	return $twig->render('track.twig', ['track' => $track]);
 }
 
+function error($title, $message) {
+	$twig = twigloader();
+	echo $twig->render('_error.twig', ['err_title' => $title, 'err_message' => $message]);
+	die();
+}
+
 function redirect($url) {
 	header(sprintf('Location: %s', $url));
 	die();
