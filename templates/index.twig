@@ -10,7 +10,8 @@ lol yeah not much to do here yet
 	<p>hi {{ userdata.name }}</p>
 {% endif %}
 
-<ul class="music-list">
+<div class="music-list">
 	{% for song in all_songs %}{{ track(song) }}{% endfor %}
-</ul>
+</div>
+<br>
 	{% endblock %}
