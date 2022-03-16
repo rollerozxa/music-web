@@ -4,5 +4,69 @@
 
 	{% block content %}
 <h2>{{ track.title }}</h2>
-<p><em>{{ track.name }}.{{ track.format }}</em></p>
+<p><em id="modfilename">{{ track.name }}.{{ track.format }}</em></p>
+
+<strong><a href="javascript:pauseButton()" id="play">Play</a></strong>
+<input id="seekbar" type="range" min="0" max="0" value="0" onchange="player.seek(this.value);">
+
+<span id="duration"></span>
+
+<script type="text/javascript" src="/assets/libopenmpt/chiptune2.js"></script>
+<script type="text/javascript">
+var player;
+function pauseButton() {
+	button = document.getElementById('play')
+	if (player.togglePause())
+		button.innerHTML = "Pause";
+	else
+		button.innerHTML = "Play";
+}
+
+function setMetadata(filename) {
+	var metadata = player.metadata();
+
+	updateDuration();
+
+	var stack = stackSave();
+	document.getElementById('library-version').innerHTML =
+		'Library version: libopenmpt ' + UTF8ToString(libopenmpt._openmpt_get_string(asciiToStack('library_version')))
+		+ ' (' + UTF8ToString(libopenmpt._openmpt_get_string(asciiToStack('build'))) + ')';
+	stackRestore(stack);
+}
+
+function updateDuration() {
+	var sec_num = player.duration();
+	var minutes = Math.floor(sec_num / 60);
+	var seconds = Math.floor(sec_num % 60);
+	if (seconds < 10) seconds = '0' + seconds;
+	document.getElementById('duration').innerHTML = minutes + ':' + seconds;
+	document.getElementById('seekbar').max = sec_num;
+}
+
+if (typeof ChiptuneAudioContext == 'undefined') {
+	document.getElementById('play').innerHTML = "The player requires a recent web browser with HTML5 audio context support.";
+}
+function initPlayer() {
+	libopenmpt.onRuntimeInitialized = _ => {
+		player = new ChiptuneJsPlayer(new ChiptuneJsConfig(-1));
+
+		path = "music/{{ track.id }}";
+		player.load(path, function(buffer) {
+			if (player.play(buffer)) {
+				document.getElementById('play').innerHTML = "Pause";
+			} else {
+				document.getElementById('play').innerHTML = "Play";
+			}
+		  	setMetadata(document.getElementById('modfilename').innerHTML);
+		  	setInterval(progress, 500);
+		});
+	};
+}
+
+function progress() {
+	document.getElementById('seekbar').value = player.getPosition();
+}
+</script>
+<script type="text/javascript" src="/assets/libopenmpt/libopenmpt.js" async="" onload="initPlayer()"></script></script>
+<p><small id="library-version"></small></p>
 	{% endblock %}
