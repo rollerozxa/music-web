@@ -32,6 +32,10 @@ if (isset($_COOKIE['login-token'])) {
 if ($log) {
 	$userdata = fetch("SELECT * FROM users WHERE id = ?", [$id]);
 } else {
+	if ($_SERVER['PHP_SELF'] != "/login.php" && $secretClub) {
+		$rdir = ($_SERVER['REQUEST_URI'] != '/' ? '?rdir='.$_SERVER['REQUEST_URI'] : '');
+		redirect('/login.php'.$rdir);
+	}
 
 }
 

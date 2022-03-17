@@ -14,3 +14,6 @@ $lpp = 20;
 
 // Website domain.
 $domain = 'https://example.org';
+
+// Configure whether your instance of music-web requires users to be logged in.
+$secretClub = true;

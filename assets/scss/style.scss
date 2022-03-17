@@ -11,6 +11,10 @@ a {
 	text-decoration: none;
 }
 
+.left { text-align: left }
+.center { text-align: center }
+.right { text-align: right }
+
 /// Form elements \\\
 input[type=text], input[type=password], input[type=submit] {
 	background-color: black;

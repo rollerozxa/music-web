@@ -3,10 +3,12 @@ require('lib/common.php');
 
 if (isset($_POST['logout'])) {
 	setcookie('login-token', '');
-	redirect('./');
+	redirect('/');
 }
 
 $error = '';
+
+$rdir = (isset($_REQUEST['rdir']) ? $_REQUEST['rdir'] : '/');
 
 if (isset($_POST['action'])) {
 	$name = (isset($_POST['name']) ? $_POST['name'] : null);
@@ -19,9 +21,13 @@ if (isset($_POST['action'])) {
 	if ($error == '') {
 		setcookie('login-token', $logindata['token'], 2147483647);
 
-		redirect('./');
+		redirect($rdir);
 	}
 }
 
 $twig = twigloader();
-echo $twig->render('login.twig', ['error' => $error]);
+echo $twig->render('login.twig', [
+	'error' => $error,
+	'secretclub' => $secretClub,
+	'rdir' => $rdir
+]);
