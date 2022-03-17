@@ -7,16 +7,15 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
-DROP TABLE IF EXISTS `music`;
 CREATE TABLE `music` (
   `id` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `format` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL
+  `format` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uploaded` int(10) unsigned DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,

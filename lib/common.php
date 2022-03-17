@@ -13,6 +13,8 @@ foreach (glob("lib/*.php") as $file) {
 	require_once($file);
 }
 
+if (!isCli()) {
+
 // Authentication code.
 if (isset($_COOKIE['login-token'])) {
 	$id = result("SELECT id FROM users WHERE token = ?", [$_COOKIE['login-token']]);
@@ -36,7 +38,11 @@ if ($log) {
 		$rdir = ($_SERVER['REQUEST_URI'] != '/' ? '?rdir='.$_SERVER['REQUEST_URI'] : '');
 		redirect('/login.php'.$rdir);
 	}
+}
 
+} else {
+	$log = false;
+	$userdata = [];
 }
 
 // I'm a self-centered egomaniac! Time itself centers around me!

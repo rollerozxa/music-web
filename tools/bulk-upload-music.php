@@ -21,8 +21,14 @@ foreach (glob("music_wip/*") as $path) {
 
 	$filehash = hash("xxh128", file_get_contents($path));
 
-	query("INSERT INTO music (id, name, title, `format`) VALUES (?,?,?,?)",
-		[$filehash, $filename, $title, $extension]);
+	// Deduplication
+	if (file_exists("music/$filehash")) {
+		printf("Track has already been uploaded! Continuing. (matches hash %s)\n", $filehash);
+		continue;
+	}
 
-	rename($path, "music/$filehash");
+	query("INSERT INTO music (id, name, title, `format`, uploaded) VALUES (?,?,?,?,?)",
+		[$filehash, $filename, $title, $extension, time()]);
+
+	copy($path, "music/$filehash");
 }
