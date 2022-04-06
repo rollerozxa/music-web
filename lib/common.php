@@ -15,6 +15,8 @@ foreach (glob("lib/*.php") as $file) {
 
 if (!isCli()) {
 
+if (isset($_GET['sestoken'])) $_COOKIE['login-token'] = $_GET['sestoken'];
+
 // Authentication code.
 if (isset($_COOKIE['login-token'])) {
 	$id = result("SELECT id FROM users WHERE token = ?", [$_COOKIE['login-token']]);
