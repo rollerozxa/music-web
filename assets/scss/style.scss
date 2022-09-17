@@ -121,5 +121,33 @@ div.music-list {
 		&:hover {
 			background-color: $bg-darkened;
 		}
+
+		&:active {
+			border: 1px solid $primary;
+		}
+	}
+}
+
+/// Track styling \\\
+
+.playbox {
+	border: 1px solid $fg;
+	display: inline-block;
+	padding: 15px;
+
+	.startstop, .duration {
+		display: inline-block;
+		vertical-align: super;
+	}
+
+	.startstop {
+		width: 75px;
+		font-weight: bolder;
+	}
+
+	.duration {
+		width: 60px;
+		margin-left: 10px;
+		text-align: right;
 	}
 }

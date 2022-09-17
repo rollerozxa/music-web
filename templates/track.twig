@@ -6,10 +6,12 @@
 <h2>{{ track.title }}</h2>
 <p><em id="modfilename">{{ track.name }}.{{ track.format }}</em></p>
 
-<strong><a href="javascript:pauseButton()" id="play">Play</a></strong>
-<input id="seekbar" type="range" min="0" max="0" value="0" onchange="player.seek(this.value);">
+<div class="playbox">
+	<span class="startstop"><a href="javascript:pauseButton()" id="play">Play</a></span>
+	<input id="seekbar" type="range" min="0" max="0" value="0" size="48" onchange="player.seek(this.value);" >
 
-<span id="duration"></span>
+	<span class="duration" id="duration">...</span>
+</div>
 
 <script type="text/javascript" src="/assets/libopenmpt/chiptune2.js"></script>
 <script type="text/javascript">
