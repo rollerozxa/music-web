@@ -1,13 +1,19 @@
+$bg: #0c0c0c;
+$bg-lightened: #1d1d1d;
+$bg-darkened: #080808;
+$fg: #eee;
+$primary: #55cf55;
+
 /// General Styling \\\
 body {
-	background-color: #0c0c0c;
-	color: #eee;
+	background-color: $bg;
+	color: $fg;
 	font-family: "Fira Code", monospace;
 	margin: 0;
 }
 
 a {
-	color: #55cf55;
+	color: $primary;
 	text-decoration: none;
 }
 
@@ -18,23 +24,23 @@ a {
 /// Form elements \\\
 input[type=text], input[type=password], input[type=submit] {
 	background-color: black;
-	color: #eee;
-	border: 1px solid #eee;
+	color: $fg;
+	border: 1px solid $fg;
 	padding: 5px;
 
 	&:hover {
-		background-color: #0c0c0c;
+		background-color: $bg;
 	}
 
 	&:focus {
-		background-color: #1d1d1d;
+		background-color: $bg-lightened;
 	}
 }
 
 /// Header & Footer \\\
 
 header, footer {
-	background-color: #080808;
+	background-color: $bg-darkened;
 	padding: 15px 0;
 }
 
@@ -55,7 +61,6 @@ header {
 			float: right;
 		}
 	}
-
 }
 
 .container {
@@ -75,7 +80,7 @@ footer {
 /// Login/Register box \\\
 
 .loginbox {
-	background-color: #080808;
+	background-color: $bg-darkened;
 	padding: 20px;
 	margin: 20px auto;
 	width: 350px;
@@ -88,18 +93,21 @@ footer {
 /// Music list \\\
 
 div.music-list {
-	a {
-		color: #eee;
-	}
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	gap: 10px 5px;
 
-	div {
+	.music {
+		color: $fg;
+
 		height: 160px;
 		width: 160px;
 		overflow: hidden;
 		display: inline-block;
-		margin: 3px 5px;
+		margin: 5px 5px;
 
-		border: 1px solid white;
+		border: 1px solid $fg;
 
 		h2 {
 			text-align: center;
@@ -111,7 +119,7 @@ div.music-list {
 		}
 
 		&:hover {
-			background-color: rgba($color: #fff, $alpha: 0.1);
+			background-color: $bg-darkened;
 		}
 	}
 }
